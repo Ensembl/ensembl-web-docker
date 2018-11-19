@@ -1,0 +1,15 @@
+version: '3'
+services:
+  webapp:
+    build: .
+    image: ensweb_website:v5
+    links:
+        - db:ensembl_docker_database
+    depends_on: 
+        - db
+    tty: true
+    ports:
+        - "8000:8080"
+  db:
+     image: sanjayboddu/ensweb-database
+     tty: true
