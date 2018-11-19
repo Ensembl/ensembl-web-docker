@@ -1,4 +1,4 @@
-FROM sanjayboddu/ensembl-web-libs:v1
+FROM sanjayboddu/ensembl-web-libs-01:experiemntal_release_94.1
 
 WORKDIR ${ENSEMBL_SOFTWARE_DEPENDENCIES_LOCATION}/linuxbrew-automation
 
