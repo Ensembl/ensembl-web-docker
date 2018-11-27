@@ -88,17 +88,29 @@ cd ${ENSEMBL_WEBCODE_LOCATION}
 git-ensembl --clone --checkout --branch release/${ENSEMBL_RELEASE} public-web 
 
 # Clone e!g repos if ENSEMBL_DIVISION is not www. We could improvise it by check if ENSEMBL_DIVISION is a valid division name
-if [ "$ENSEMBL_DIVISION" != "www" ]; then
+if [ "${ENSEMBL_DIVISION}" != "www" ]; then
 	git ensembl --clone --branch release/eg/${ENSEMBL_GENOMES_RELEASE} eg-${ENSEMBL_DIVISION}
 fi
 
 
 git-ensembl --checkout --branch experimental/docker2 public-plugins 
-cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
+
+
+
+if [[ "${ENSEMBL_DIVISION}" == "www" ]]; then
+	cp public-plugins/docker/conf/Plugins.pm-dist-www ensembl-webcode/conf/Plugins.pm
+else
+	cp public-plugins/docker/conf/Plugins.pm-dist-div ensembl-webcode/conf/Plugins.pm
+# logic with sed	
+fi
+
+
+
+
 
 mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed
 
 
 ensembl-webcode/ctrl_scripts/init 
-ensembl-webcode/ctrl_scripts/build_packed ALL
+#ensembl-webcode/ctrl_scripts/build_packed ALL
 
