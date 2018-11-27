@@ -112,5 +112,5 @@ mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed
 
 
 ensembl-webcode/ctrl_scripts/init 
-#ensembl-webcode/ctrl_scripts/build_packed ALL
+ensembl-webcode/ctrl_scripts/build_packed ALL
 

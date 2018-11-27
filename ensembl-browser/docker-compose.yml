@@ -1,8 +1,13 @@
 version: '3'
 services:
   webapp:
-#    build: .
-    image: sanjayboddu/ensembl-browser:experiemntal_release_94.1 
+    build:
+        context: .
+        args:
+            ENSEMBL_DIVISION: plants          
+            ENSEMBL_RELEASE: 94
+            ENSEMBL_GENOMES_RELEASE: 41
+#    image: sanjayboddu/ensembl-browser:experiemntal_release_94.1 
     links:
         - db:ensembl_docker_database
     depends_on: 
