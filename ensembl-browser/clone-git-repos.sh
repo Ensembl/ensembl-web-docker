@@ -101,7 +101,7 @@ if [[ "${ENSEMBL_DIVISION}" == "www" ]]; then
 	cp public-plugins/docker/conf/Plugins.pm-dist-www ensembl-webcode/conf/Plugins.pm
 else
 	cp public-plugins/docker/conf/Plugins.pm-dist-div ensembl-webcode/conf/Plugins.pm
-# logic with sed	
+        sed -i -e "s/division/${ENSEMBL_DIVISION}/g" -e "s/Division/${ENSEMBL_DIVISION^}/g" ensembl-webcode/conf/Plugins.pm 
 fi
 
 
