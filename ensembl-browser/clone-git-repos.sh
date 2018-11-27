@@ -47,7 +47,7 @@
 
 
 if [[ -z "${ENSEMBL_DIVISION}" ]]; then
-        printf "Please set ENSEMBL_DIVISION to www for Ensembl site or [metazoa|bacteria|plants|fungi|protists] for divisional sites"
+        printf "Please set ENSEMBL_DIVISION to ensembl for Ensembl site or [metazoa|bacteria|plants|fungi|protists] for divisional sites"
         return
 fi
 
@@ -58,13 +58,13 @@ if [[ -z "${ENSEMBL_RELEASE}" && -z "${ENSEMBL_GENOMES_RELEASE}" ]]; then
 fi
 
 
-if [[ "${ENSEMBL_DIVISION}" == "www" &&  -z "${ENSEMBL_RELEASE}" ]]; then
+if [[ "${ENSEMBL_DIVISION}" == "ensembl" &&  -z "${ENSEMBL_RELEASE}" ]]; then
 	printf "ENSEMBL_RELEASE must be supplied when creating site for Ensembl"
 	return
 fi
 
 
-if [[ "${ENSEMBL_DIVISION}" != "www" &&  -z "${ENSEMBL_GENOMES_RELEASE}" ]]; then
+if [[ "${ENSEMBL_DIVISION}" != "ensembl" &&  -z "${ENSEMBL_GENOMES_RELEASE}" ]]; then
         printf "ENSEMBL_GENOMES_RELEASE must be supplied when creating Ensembl divisional site"
         return
 fi
@@ -79,16 +79,12 @@ echo ENSEMBL_TMP_DIR_LOCATION         = "${ENSEMBL_TMP_DIR_LOCATION}"
 
 
 
-
-
-
-
 cd ${ENSEMBL_WEBCODE_LOCATION}
 
 git-ensembl --clone --checkout --branch release/${ENSEMBL_RELEASE} public-web 
 
-# Clone e!g repos if ENSEMBL_DIVISION is not www. We could improvise it by check if ENSEMBL_DIVISION is a valid division name
-if [ "${ENSEMBL_DIVISION}" != "www" ]; then
+# Clone e!g repos if ENSEMBL_DIVISION is not ensembl. We could improvise it by check if ENSEMBL_DIVISION is a valid division name
+if [ "${ENSEMBL_DIVISION}" != "ensembl" ]; then
 	git ensembl --clone --branch release/eg/${ENSEMBL_GENOMES_RELEASE} eg-${ENSEMBL_DIVISION}
 fi
 
@@ -97,8 +93,8 @@ git-ensembl --checkout --branch experimental/docker2 public-plugins
 
 
 
-if [[ "${ENSEMBL_DIVISION}" == "www" ]]; then
-	cp public-plugins/docker/conf/Plugins.pm-dist-www ensembl-webcode/conf/Plugins.pm
+if [[ "${ENSEMBL_DIVISION}" == "ensembl" ]]; then
+	cp public-plugins/docker/conf/Plugins.pm-dist-ensembl ensembl-webcode/conf/Plugins.pm
 else
 	cp public-plugins/docker/conf/Plugins.pm-dist-div ensembl-webcode/conf/Plugins.pm
         sed -i -e "s/division/${ENSEMBL_DIVISION}/g" -e "s/Division/${ENSEMBL_DIVISION^}/g" ensembl-webcode/conf/Plugins.pm 
