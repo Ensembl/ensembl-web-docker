@@ -1,4 +1,4 @@
-FROM sanjayboddu/ensembl-web-libs-03:experiemntal_release_94.1
+FROM ensemblorg/ensembl-web-libs-03:experiemntal_release_95.1
 
 USER www
 

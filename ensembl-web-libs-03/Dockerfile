@@ -1,4 +1,4 @@
-FROM sanjayboddu/ensembl-web-libs-02:experiemntal_release_94.1
+FROM ensemblorg/ensembl-web-libs-02:experiemntal_release_95.1
 
 #WORKDIR ${ENSEMBL_SOFTWARE_DEPENDENCIES_LOCATION}/linuxbrew-automation
 #RUN git pull
