@@ -89,9 +89,6 @@ if [ "${ENSEMBL_DIVISION}" != "ensembl" ]; then
 fi
 
 
-git-ensembl --checkout --branch experimental/docker2 public-plugins 
-
-
 
 if [[ "${ENSEMBL_DIVISION}" == "ensembl" ]]; then
 	cp public-plugins/docker/conf/Plugins.pm-dist-ensembl ensembl-webcode/conf/Plugins.pm
