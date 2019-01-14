@@ -1,4 +1,4 @@
-FROM sanjayboddu/ensembl-web-libs-03:experiemntal_release_94.1
+FROM ensemblorg/ensembl-web-libs-03:experiemntal_release_95.1
 
 USER www
 
@@ -10,9 +10,8 @@ WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
 # checkout code
 RUN source ${HOME}/.bashrc \
-    && git-ensembl --clone --checkout --branch release/94 public-web \
-    && git-ensembl --checkout --branch experimental/docker2 public-plugins \
-    && cp public-plugins/docker/conf/Plugins.pm-dist ensembl-webcode/conf/Plugins.pm
+    && git-ensembl --clone --checkout --branch release/95 public-web \
+    && cp public-plugins/docker/conf/Plugins.pm-dist-ensembl ensembl-webcode/conf/Plugins.pm
 
 RUN mkdir -p ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed 
 #ADD --chown=www  *.packed ${ENSEMBL_TMP_DIR_LOCATION}/server/conf/packed/
