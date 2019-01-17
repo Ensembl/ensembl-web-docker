@@ -80,6 +80,10 @@ git-ensembl --clone --checkout --branch release/${ENSEMBL_RELEASE} public-web
 # Clone e!g repos if ENSEMBL_DIVISION is not ensembl. We could improvise it by check if ENSEMBL_DIVISION is a valid division name
 if [ "${ENSEMBL_DIVISION}" != "ensembl" ]; then
 	git ensembl --clone --branch release/eg/${ENSEMBL_GENOMES_RELEASE} eg-${ENSEMBL_DIVISION}
+
+	# Following two lines can be removed when building image for release 96. They are added to 'eg-<division>' groups in ensembl-git-tools and will be picked up the next time we build libs.
+	git ensembl --clone --branch release/${ENSEMBL_RELEASE} ensembl-metadata
+	git ensembl --clone --branch release/${ENSEMBL_RELEASE} ensembl-taxonomy
 fi
 
 
