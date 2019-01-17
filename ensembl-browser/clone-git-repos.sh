@@ -47,19 +47,13 @@
 
 
 if [[ -z "${ENSEMBL_DIVISION}" ]]; then
-        printf "Please set ENSEMBL_DIVISION to ensembl for Ensembl site or [metazoa|bacteria|plants|fungi|protists] for divisional sites"
+        printf "Please set ENSEMBL_DIVISION to 'ensembl' for Ensembl site or to [metazoa|bacteria|plants|fungi|protists] for divisional sites."
         return
 fi
 
 
-if [[ -z "${ENSEMBL_RELEASE}" && -z "${ENSEMBL_GENOMES_RELEASE}" ]]; then
-	printf "Please set either ENSEMBL_RELEASE for Ensembl site or ENSEMBL_GENOMES_RELEASE for divisional sites"
-	return
-fi
-
-
-if [[ "${ENSEMBL_DIVISION}" == "ensembl" &&  -z "${ENSEMBL_RELEASE}" ]]; then
-	printf "ENSEMBL_RELEASE must be supplied when creating site for Ensembl"
+if [[ -z "${ENSEMBL_RELEASE}" ]]; then
+	printf "Please set the value of ENSEMBL_RELEASE to the Ensembl release version. For example, to build a site with release 95 code, set 'ENSEMBL_RELEASE: 95' in docker-compose file if you are building using docker-compose or pass it as command line argument"
 	return
 fi
 
@@ -71,11 +65,11 @@ fi
 
 
 
-echo ENSEMBL_DIVISION  = "${ENSEMBL_DIVISION}"
-echo ENSEMBL_RELEASE    = "${ENSEMBL_RELEASE}"
-echo ENSEMBL_GENOMES_RELEASE    = "${ENSEMBL_GENOMES_RELEASE}"
-echo ENSEMBL_WEBCODE_LOCATION     = "${ENSEMBL_WEBCODE_LOCATION}"
-echo ENSEMBL_TMP_DIR_LOCATION         = "${ENSEMBL_TMP_DIR_LOCATION}"
+echo ENSEMBL_DIVISION		= "${ENSEMBL_DIVISION}"
+echo ENSEMBL_RELEASE		= "${ENSEMBL_RELEASE}"
+echo ENSEMBL_GENOMES_RELEASE	= "${ENSEMBL_GENOMES_RELEASE}"
+echo ENSEMBL_WEBCODE_LOCATION	= "${ENSEMBL_WEBCODE_LOCATION}"
+echo ENSEMBL_TMP_DIR_LOCATION	= "${ENSEMBL_TMP_DIR_LOCATION}"
 
 
 
