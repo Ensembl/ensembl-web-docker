@@ -84,6 +84,12 @@ if [ "${ENSEMBL_DIVISION}" != "ensembl" ]; then
 	# Following two lines can be removed when building image for release 96. They are added to 'eg-<division>' groups in ensembl-git-tools and will be picked up the next time we build libs.
 	git ensembl --clone --branch release/${ENSEMBL_RELEASE} ensembl-metadata
 	git ensembl --clone --branch release/${ENSEMBL_RELEASE} ensembl-taxonomy
+
+
+	# Add static content(images, taxon tree, species descriptions etc) to the site
+	printf "Pulling ${ENSEMBL_DIVISION}'s static content for release ${ENSEMBL_GENOMES_RELEASE} \n"
+	curl -O ftp://ftp.ensemblgenomes.org/pub/release-${ENSEMBL_GENOMES_RELEASE}/${ENSEMBL_DIVISION}/web_assets.tar.gz; 
+	tar -zx --directory eg-web-${ENSEMBL_DIVISION} --file web_assets.tar.gz
 fi
 
 
