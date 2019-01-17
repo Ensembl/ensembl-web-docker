@@ -1,4 +1,4 @@
-# Ensembl uses docker-compose file only due to dependency on sessions database. We could pass dependency by command line while runnig the container but it is easier with docker-compose file. 
+# Ensembl uses docker-compose file only due to dependency on sessions database. We could pass this dependency as command line argument while running the container but it is easier with docker-compose file. 
 # docker-compose is not necessarily needed for building the image. It is needed only while running the containers. 
 # Uncomment 'image' line under 'webapp' section if you just want to run the site from the prebuilt image. 
 

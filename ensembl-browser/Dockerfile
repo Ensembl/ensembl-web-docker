@@ -9,7 +9,7 @@ ARG ENSEMBL_RELEASE
 ARG ENSEMBL_GENOMES_RELEASE
 
 
-# ENSEMBL_WEBCODE_LOCATION env variable is set in previous images
+# ENSEMBL_WEBCODE_LOCATION env variable is set in base images
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
 
