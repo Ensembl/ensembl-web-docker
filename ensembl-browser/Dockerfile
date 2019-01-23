@@ -13,10 +13,14 @@ ARG ENSEMBL_GENOMES_RELEASE
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
 
-ADD clone-git-repos.sh $ENSEMBL_WEBCODE_LOCATION
+# Add customisation examples to webcode location if user decides to use them
+ADD --chown=www custom-plugin-examples $ENSEMBL_WEBCODE_LOCATION/custom-plugin-example
+
+
+ADD --chown=www create-ensembl-site.sh $ENSEMBL_WEBCODE_LOCATION
 
 RUN source ${HOME}/.bashrc \
-    && /bin/bash -c "time source clone-git-repos.sh" 
+    && /bin/bash -c "time source create-ensembl-site.sh" 
 
 
 CMD source ${HOME}/.bashrc \
