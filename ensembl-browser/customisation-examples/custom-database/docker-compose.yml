@@ -1,7 +1,0 @@
-version: '3'
-services:
-  webapp:
-    build: .
-    tty: true
-    ports:
-        - "8000:8080"
