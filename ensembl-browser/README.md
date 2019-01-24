@@ -15,3 +15,31 @@ But if you have a use case to build them from scratch, we would be interested to
 
 
 ## Build image
+
+Change to to directory where Dockerfile sits and do:
+```
+docker build . -t <image_name>:<tag_name> --no-cache
+```
+
+You could also provide location of Dockerfile using -f or --file flag instead of changing the directory to where Dockerfile sits.
+
+
+To build default Ensembl site,
+
+```
+cd ensembl-browser/
+docker build . \
+-t my-ensembl-browser:release95 \
+--build-arg ENSEMBL_DIVISION=ensembl \
+--build-arg ENSEMBL_RELEASE=95 \
+--build-arg ENSEMBL_GENOMES_RELEASE=42  \
+--no-cache
+```
+
+Dockerfile for ensembl-browser needs following three build arguments:
+
+```ENSEMBL_DIVISION``` -> Set ENSEMBL_DIVISION to 'ensembl' for Ensembl site or to [metazoa|bacteria|plants|fungi|protists] for divisional sites.
+
+```ENSEMBL_RELEASE``` -> Set ENSEMBL_RELEASE to the Ensembl release version. For example, to build a site with release 95 code, set ```ENSEMBL_RELEASE=95``` 
+
+```ENSEMBL_GENOMES_RELEASE``` -> Set ENSEMBL_GENOMES_RELEASE to Ensembl Genomes release version. It is needed only if you are building divisional(metazoa|bacteria|plants|fungi|protists) site and is not a mandatory build argument to build Ensembl(Vertebrates) site
