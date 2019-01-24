@@ -2,7 +2,7 @@
 
 Due to obvious security issues, we couldn't host writable sessions database on Ensembl's public MySQL server. 
 
-Therefore, we need to create a separate image for writable databases. But if you would like to use your own sessions databases, you could overwrite it using custom plugins(see custom-plugin-examples).
+Therefore, we need to create a separate image for writable databases. But if you would like to use your own sessions databases, you could overwrite it using custom plugins(see [custom-plugin-examples](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-browser/custom-plugin-examples)).
 
 This image uses mysql:5.6 as its base image.
 
