@@ -1,24 +1,25 @@
 # Ensembl uses docker-compose file only due to dependency on sessions database. We could pass this dependency as command line argument while running the container but it is easier with docker-compose file. 
-# docker-compose is not necessarily needed for building the image. It is needed only while running the containers. 
-# Uncomment 'image' line under 'webapp' section if you just want to run the site from the prebuilt image. 
 
 version: '3'
 services:
-  webapp:
-    build:
-        context: .
-        args:
-            ENSEMBL_DIVISION: ensembl                                   # Set ENSEMBL_DIVISION to 'ensembl' for Ensembl site or to [metazoa|bacteria|plants|fungi|protists] for divisional sites.
-            ENSEMBL_RELEASE: 95                                         # Set ENSEMBL_RELEASE to the Ensembl release version. For example, to build a site with release 95 code, set 'ENSEMBL_RELEASE: 95'  
-            ENSEMBL_GENOMES_RELEASE: 42                                 # Set ENSEMBL_GENOMES_RELEASE to Ensembl Genomes release version. It is needed only if you are building divisional(metazoa|bacteria|plants|fungi|protists) site. 
-#    image: sanjayboddu/ensembl-browser:experiemntal_release_94.1 
-    links:
-        - db:ensembl_docker_database
+
+  browser:
+    image: sanjayboddu/ensembl-browser:experiemntal_release_94.1 
+    networks:
+      - my-custom-network    
     depends_on: 
-        - db
+        - ensembl_docker_database
     tty: true
     ports:
         - "8000:8080"
-  db:
+
+  ensembl_docker_database:
      image: ensemblorg/ensembl-browser-db:experiemntal_release_95.1
+     networks:
+       - my-custom-network
      tty: true
+
+
+networks:
+    my-custom-network:
+        driver: bridge
