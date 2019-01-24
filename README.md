@@ -47,7 +47,7 @@ Run docker compose using following command:
 docker-compose -f ensembl-browser/docker-compose.yml up
 ```
 
-# Other Ensembl divisional sites
+## Other Ensembl divisional sites
 
 There are images for other Ensembl divisional sites (Metazoa, Bacteria, Plants, Fungi and Protists) on the Docker Hub which you could pull and start. Just update the value of ‘image’ in the docker-compose.yml file to the location of your Ensembl divisional site image and you should be ready to go with
 ```
@@ -55,3 +55,22 @@ docker-compose -f ensembl-browser/docker-compose.yml up
 ```
 
 
+# Components
+
+This project has got 3 components
+
+1) Building web libs
+
+Building web libs is done in 3 stages using Dockerfiles in [ensembl-web-libs-01](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-web-libs-01), [ensembl-web-libs-02](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-web-libs-02) and [ensembl-web-libs-03](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-web-libs-03). 
+
+They are divided into three different Dockerfiles due to build time restriction on Docker Hub.
+
+You could imagine each stage as a layer in a stack with each building on top of another.
+
+2) Building ensembl browser site
+
+Building browser also involves 3 stages. But unlike web libs, all these three stages are done by single Dockerfile in [ensembl-browser](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-browser) 
+
+3) Building sessions database
+
+Due to obvious security issues, we couldn't host writable sessions database on Ensembl's public MySQL server. The Dockerfile in [ensembl-browser-db](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-browser-db) takes care of building image with Ensembl sessions database server using mysql:5.6 as its base image. 
