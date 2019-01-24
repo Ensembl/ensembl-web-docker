@@ -25,7 +25,7 @@ docker build . -t <image_name>:<tag_name> --no-cache
 
 You could also provide location of Dockerfile using ```-f``` or ```--file``` flag instead of changing the directory to where Dockerfile sits.
 
-To build ensembl-web-libs-03 image,
+For example, to build ensembl-web-libs-03 image,
 
 
 ```
