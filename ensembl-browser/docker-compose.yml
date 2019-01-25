@@ -4,7 +4,7 @@ version: '3'
 services:
 
   browser:
-    image: sanjayboddu/ensembl-browser:experiemntal_release_94.1 
+    image: ensemblorg/ensembl-browser-vertebrates:experiemntal_release_95.1 
     networks:
       - my-custom-network    
     depends_on: 
