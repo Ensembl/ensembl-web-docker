@@ -71,15 +71,13 @@ fi
 
 
 
-##################### CUSTOMISATION BLOCK. UNCOMMENT FOLLOWING CODE AS REQUIRED ######################################################
+#################### CUSTOMISATION BLOCK. UNCOMMENT FOLLOWING CODE AS REQUIRED ######################
 
+# cp custom-plugin-examples/custom-species/conf/Plugins.pm ensembl-webcode/conf/Plugins.pm
+# or
+# cp custom-plugin-examples/custom-database/conf/Plugins.pm ensembl-webcode/conf/Plugins.pm
 
-
-
-
-
-
-######################################################################################################################################
+########################################################################################################
 
 
 
