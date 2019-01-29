@@ -13,8 +13,8 @@ ARG ENSEMBL_GENOMES_RELEASE
 WORKDIR $ENSEMBL_WEBCODE_LOCATION
 
 
-# Add customisation examples to webcode location if user decides to use them
-ADD --chown=www custom-plugin-examples $ENSEMBL_WEBCODE_LOCATION/custom-plugin-example
+# Add custom plugin to webcode location if user decides to use them. Uncomment the following line and replace 'your-custom-plugin' with the name of your plugin 
+#ADD --chown=www your-custom-plugin $ENSEMBL_WEBCODE_LOCATION/your-custom-plugin
 
 
 ADD --chown=www create-ensembl-site.sh $ENSEMBL_WEBCODE_LOCATION
