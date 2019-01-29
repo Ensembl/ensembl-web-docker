@@ -20,7 +20,7 @@ limitations under the License.
 # list of plugins used in the docker demo site
 
 $SiteDefs::ENSEMBL_PLUGINS = [
-  'EnsEMBL::Custom'         => $SiteDefs::ENSEMBL_SERVERROOT.'/custom-plugin',
+  'EnsEMBL::Custom'         => $SiteDefs::ENSEMBL_SERVERROOT.'/custom-species',
   'EnsEMBL::Docker'         => $SiteDefs::ENSEMBL_SERVERROOT.'/public-plugins/docker',
   'EnsEMBL::Linuxbrew'      => $SiteDefs::ENSEMBL_SERVERROOT.'/public-plugins/linuxbrew',
   'EnsEMBL::Widgets'        => $SiteDefs::ENSEMBL_SERVERROOT.'/public-plugins/widgets',
