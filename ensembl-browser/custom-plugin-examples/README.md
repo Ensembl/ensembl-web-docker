@@ -30,21 +30,15 @@ $SiteDefs::ENSEMBL_PLUGINS = [
 
 The plugins are processed in reverse order, starting with the last one.
 
-By creating your own plugin, you can completely change the available species, alter the colour scheme or page template, or add your own views and static content, or use your own databases.
-
-To override default configuration with configurations from your plugin, you need to define your plugin as the first element in the above array. For example, if you happen to use/adapt “custom-species” plugin in this directory for your custom site, you array would look like in [Plugins.pm] (https://github.com/Ensembl/ensembl-web-docker/blob/master/ensembl-browser/custom-plugin-examples/custom-species/conf/Plugins.pm)
-
-This Plugins.pm would then need to be copied to default location in ensembl-webcode for it to get picked up like in the following line:
-https://github.com/Ensembl/ensembl-web-docker/blob/62d965f5458be4ee660a483853044f71d8386247/ensembl-browser/create-ensembl-site.sh#L76-L78
-
-
+By creating your own plugin, you can completely change the available species, alter the colour scheme or page template, or add your own views and static content, or use your own databases. 
  
-
-
-
-
-
-## Example commands
-
-# Syntax for building an image
-docker build . -t <image_name>:<tag_name> --no-cache
+ ## Customisation involves following steps
+ 
+ - Prepare your plugin using the above custom-* plugins as example or edit and adapt them accoording to your need
+ - Edit dockerfile to add your plugin to image's filesystem. Here is an [example](https://github.com/Ensembl/ensembl-web-docker/blob/869d9f280815f52c548be6aa672f169b1d71014a/ensembl-browser/Dockerfile#L17) how to add your plugin to image's filesystem.
+ - Make sure you edit your Plugins.pm to define your custom-plugin as the first element in the array
+   - To override default configuration with configurations from your plugin, you need to define your plugin as the first element in the above array. For example, if you happen to use/adapt “custom-species” plugin in this directory for your custom site, you array would look like in [Plugins.pm](https://github.com/Ensembl/ensembl-web-docker/blob/master/ensembl-browser/custom-plugin-examples/custom-species/conf/Plugins.pm)
+- Your Plugin.pm from the custom-plugin directory which you added to image's filesystem would then need to be copied to default location in ensembl-webcode for it to get picked up. Here is an [example](https://github.com/Ensembl/ensembl-web-docker/blob/f9481c04f2dda5f2d79fafbed54ace42cc8feaaa/ensembl-browser/create-ensembl-site.sh#L76)
+- Build your image with required build time parameters as described [here](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-browser)
+- Run your image. Example ```docker run <your_image_name>``` 
+  - Create a network and add sessions database container and your container to the network **if required** as described [here](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-browser) again.
