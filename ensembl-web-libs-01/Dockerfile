@@ -39,21 +39,15 @@ USER www
 
 WORKDIR ${ENSEMBL_SOFTWARE_DEPENDENCIES_LOCATION}
 
-
-#######################
-
-#RUN wget https://github.com/Ensembl/linuxbrew-automation/archive/2.0.0.tar.gz \
-#    && tar -xvzf 2.0.0.tar.gz 
-
-#WORKDIR ${ENSEMBL_SOFTWARE_DEPENDENCIES_LOCATION}/linuxbrew-automation-2.0.0
+# Clone Ensembl repo which hosts scripts to build & install all the required software to run an Ensembl site.
 
 RUN git clone https://github.com/Ensembl/linuxbrew-automation.git
 WORKDIR ${ENSEMBL_SOFTWARE_DEPENDENCIES_LOCATION}/linuxbrew-automation
-RUN git checkout docker  
+RUN git checkout release/95  
 
 RUN /bin/bash -c "time source 01-base-libraries.sh $ENSEMBL_SOFTWARE_DEPENDENCIES_LOCATION" \
     && rm -r ${HOME}/.cache/Homebrew/downloads/* 
-#######################
+
 
 
 CMD ["/bin/bash"] 
