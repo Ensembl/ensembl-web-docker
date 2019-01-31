@@ -41,4 +41,4 @@ By creating your own plugin, you can completely change the available species, al
 - Your Plugin.pm from the custom-plugin directory which you added to image's filesystem would then need to be copied to default location in ensembl-webcode for it to get picked up. Here is an [example](https://github.com/Ensembl/ensembl-web-docker/blob/f9481c04f2dda5f2d79fafbed54ace42cc8feaaa/ensembl-browser/create-ensembl-site.sh#L76)
 - Build your image with required build time parameters as described [here](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-browser)
 - Run your image. Example ```docker run <your_image_name>``` 
-  - Create a network and add sessions database container and your container to the network **if required** as described [here](https://github.com/Ensembl/ensembl-web-docker/tree/master/ensembl-browser) again.
+  - Or if required, create a custom network and add sessions database container along with your container to it as described [here](https://github.com/Ensembl/ensembl-web-docker).
