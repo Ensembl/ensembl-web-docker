@@ -21,8 +21,11 @@ use strict;
 sub update_conf {
 
 
-$SiteDefs::PRODUCTION_NAMES = [qw(
-    danio_rerio
+  $SiteDefs::ENSEMBL_PRIMARY_SPECIES   = 'Danio_rerio';
+  $SiteDefs::ENSEMBL_SECONDARY_SPECIES = 'Danio_rerio';
+
+  $SiteDefs::PRODUCTION_NAMES = [qw(
+     danio_rerio
   )];
 
 }
