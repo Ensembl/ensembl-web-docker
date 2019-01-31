@@ -19,10 +19,11 @@ use strict;
 # plugin to demonstrate a single species server
 
 sub update_conf {
-  
-  push(@{ $SiteDefs::PRODUCTION_NAMES }, qw(
+
+
+$SiteDefs::PRODUCTION_NAMES = [qw(
     anopheles_gambiae
-  ));
+  )];
 
 }
 
