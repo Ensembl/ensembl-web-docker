@@ -22,7 +22,7 @@ sub update_conf {
 
 
 $SiteDefs::PRODUCTION_NAMES = [qw(
-    anopheles_gambiae
+    danio_rerio
   )];
 
 }
